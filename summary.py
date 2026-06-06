@@ -62,10 +62,10 @@ async def summary(message: types.Message):
     # 2. Set up ranges for daily breakdowns
     if period == "weekly":
         since_str = (now - timedelta(days=6)).strftime('%Y-%m-%d 00:00:00') # Last 7 days including today
-        report_header = f"📊 {hbold('Weekly Breakdown Report')} (Last 7 Days):\n"
+        report_header = f"📊 {hbold('របាយការណ៍ប្រចាំសប្តាហ៍')} (Last 7 Days):\n"
     elif period == "monthly":
         since_str = (now - timedelta(days=29)).strftime('%Y-%m-%d 00:00:00') # Last 30 days including today
-        report_header = f"📊 {hbold('Monthly Breakdown Report')} (Last 30 Days):\n"
+        report_header = f"📊 {hbold('របាយការណ៍ប្រចាំខែ')} (Last 30 Days):\n"
     else:
         return await message.reply("Options: daily, weekly, monthly")
 
@@ -127,7 +127,7 @@ async def logger_handler(message: types.Message):
             row = await cursor.fetchone()
             current_total = row[0]
 
-    await message.reply(f"📈 ចំនួនសរុបថ្ងៃនេះ: {hbold(current_total)}", parse_mode="HTML", disable_notification=True)
+    await message.reply(f"📈 ចំនួនកម្មងសរុបថ្ងៃនេះ: {hbold(current_total)}", parse_mode="HTML", disable_notification=True)
 
 async def main():
     await init_db()
